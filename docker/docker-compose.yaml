@@ -952,24 +952,21 @@ networks:
   ssrf_proxy_network:
     driver: bridge
     internal: true
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16
   milvus:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.0.0/16
   opensearch-net:
     driver: bridge
     internal: true
+    ipam:
+      config:
+        - subnet: 172.32.0.0/16
 
 volumes:
   oradata:
   dify_es01_data:
-
-networks:
-  ssrf_proxy_network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.30.0.0/16  # 使用一个未被占用的子网段
-  default:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.31.0.0/16  # 使用另一个未被占用的子网段
