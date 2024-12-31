@@ -961,3 +961,15 @@ networks:
 volumes:
   oradata:
   dify_es01_data:
+
+networks:
+  ssrf_proxy_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/16  # 使用一个未被占用的子网段
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.0.0/16  # 使用另一个未被占用的子网段
